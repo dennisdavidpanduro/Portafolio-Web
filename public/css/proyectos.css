@@ -31,20 +31,23 @@
   transform: skewX(-15deg);
 }
 
-/* --- GRID Y TARJETAS --- */
+/* --- GRID Y TARJETAS CORREGIDO PARA MÓVIL --- */
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
   gap: 2.5rem;
   max-width: 1000px;
-  margin: 0 auto; 
+  margin: 0 auto;
+  width: 100%; /* Asegura que el grid no se salga del contenedor */
 }
 
 .project-card {
   background: white;
   border: 2px solid #1a1a1a;
   border-radius: 20px;
-  width: 320px;
+  width: 100%;       /* Cambiado de 320px a 100% para que sea flexible */
+  max-width: 320px;  /* Pero que no crezca más de 320px */
+  margin: 0 auto;    /* Centra la tarjeta si se queda sola */
   overflow: hidden;
   text-align: left;
   box-shadow: 6px 6px 0px #1a1a1a;
@@ -84,16 +87,15 @@
   border-radius: 5px;
   display: inline-block;
   margin-bottom: 0.8rem;
-  vertical-align: middle; /* Alineación base */
+  vertical-align: middle;
 }
 
-/* ESTILO PARA LOS ICONOS DE TECNOLOGÍA (PS, AI, etc) */
 .project-card__content img {
   width: 24px;
   height: 24px;
   vertical-align: middle;
   margin-left: 6px;
-  margin-bottom: 0.8rem; /* Igual al margen del badge */
+  margin-bottom: 0.8rem;
   border: 1.5px solid #1a1a1a;
   border-radius: 6px;
   padding: 2px;
@@ -107,7 +109,7 @@
   box-shadow: 3px 3px 0px #f4ff5e;
 }
 
-/* --- VENTANA FLOTANTE (MODAL) CORREGIDA --- */
+/* --- VENTANA FLOTANTE (MODAL) --- */
 .project-modal {
   border: 3px solid #1a1a1a;
   border-radius: 24px;
@@ -212,26 +214,21 @@
    ESTILO MODERNO "EDITORIAL" PARA MODAL TRES-I
    ============================================================ */
 
-/* 1. Fondo del modal más suave para que las fotos resalten */
-#modal-tres-i {
-  background-color: #fafafa;
-}
+#modal-tres-i { background-color: #fafafa; }
 
-/* 2. Limpieza de la galería */
 #modal-tres-i .modal__gallery {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* 3. Títulos con estilo de etiqueta moderna */
 #modal-tres-i .modal__gallery h1 {
   font-size: 1.5rem;
-  background: var(--main-black);
+  background: #1a1a1a;
   color: white;
   display: inline-block;
   padding: 5px 15px;
-  transform: rotate(-1deg); /* Efecto sticker */
+  transform: rotate(-1deg);
   margin-top: 2.5rem;
   width: fit-content;
 }
@@ -240,41 +237,38 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--text-gray);
+  color: #4b5563;
   margin: 0.5rem 0 1.5rem;
 }
 
-/* 4. Grilla de posts estilo "Feed de Instagram" */
 #modal-tres-i .modal__gallery > div {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas para look de feed */
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   background: white;
   padding: 20px;
-  border: 2px solid var(--main-black);
+  border: 2px solid #1a1a1a;
   border-radius: 20px;
   box-shadow: 8px 8px 0px rgba(0, 132, 255, 0.03);
   margin-bottom: 3rem;
 }
 
-/* 5. Imágenes de los posts */
 #modal-tres-i .modal__gallery div img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid #eee;
-  filter: grayscale(20%); /* Efecto visual moderno */
+  filter: grayscale(20%);
   transition: all 0.3s ease;
 }
 
 #modal-tres-i .modal__gallery div img:hover {
   filter: grayscale(0%);
   transform: translateY(-5px);
-  border-color: var(--main-black);
+  border-color: #1a1a1a;
 }
 
-/* 6. Caja de descripción (Lorem Ipsum) como pie de foto */
 #modal-tres-i .modal__gallery div div {
   grid-column: 1 / -1;
   background: #f1f1f1;
@@ -292,19 +286,10 @@
   border: none;
 }
 
-/* 7. Portada Principal */
 #modal-tres-i .modal__img {
   border-radius: 20px;
-  border: 2px solid var(--main-black);
+  border: 2px solid #1a1a1a;
   filter: none;
-}
-
-/* Responsive para que en móvil se vea en 2 columnas */
-@media (max-width: 500px) {
-  #modal-tres-i .modal__gallery > div {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px;
-  }
 }
 
 /* ANIMACIONES */
@@ -313,9 +298,38 @@
   50% { transform: translateY(-10px); }
 }
 
-/* Responsive */
-@media (max-width: 650px) {
-  .modal__gallery { grid-template-columns: 1fr; }
-  .modal__body { padding: 0 1.5rem 1.5rem; }
+/* --- RESPONSIVE CORREGIDO --- */
+@media (max-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    padding: 0 1rem;
+  }
 }
 
+@media (max-width: 650px) {
+  .projects__grid {
+    grid-template-columns: 1fr; /* 1 columna en celulares */
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .project-card {
+    max-width: 100%; /* La tarjeta ocupa el ancho disponible del móvil */
+  }
+
+  .modal__gallery { grid-template-columns: 1fr; }
+  .modal__body { padding: 0 1.5rem 1.5rem; }
+
+  /* Feed de Tres-I en móvil a 2 columnas para que no sea infinito */
+  #modal-tres-i .modal__gallery > div {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  /* En pantallas muy pequeñas, forzar todo a una columna si es necesario */
+  #modal-tres-i .modal__gallery > div {
+    grid-template-columns: 1fr;
+  }
+}
