@@ -1,13 +1,15 @@
+/* ============================================================
+   CONFIGURACIÓN GLOBAL Y VARIABLES
+   ============================================================ */
 html {
-  scroll-behavior: smooth; /* Desplazamiento fluido */
-  /* Ajusta este valor según la altura de tu navbar + el top (20px + ~60px) */
+  scroll-behavior: smooth;
   scroll-padding-top: 100px; 
 }
 
 :root {
   --bg-color: #ffffff;
   --main-black: #1a1a1a;
-  --accent-yellow: #f4ff5e; /* Color limón vibrante */
+  --accent-yellow: #f4ff5e; 
   --shadow: 4px 4px 0px var(--main-black);
   --shadow-hover: 2px 2px 0px var(--main-black);
   --poppins: 'Poppins', sans-serif;
@@ -20,9 +22,12 @@ html {
   font-family: var(--poppins);
 }
 
+/* ============================================================
+   NAVBAR ESTILO FLOTANTE
+   ============================================================ */
 .navbar {
   position: fixed;
-  top: 20px; /* Separado del techo para efecto flotante */
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
@@ -33,6 +38,7 @@ html {
   border-radius: 12px;
   z-index: 1000;
   padding: 0.5rem 0;
+  animation: entrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .navbar__container {
@@ -42,13 +48,14 @@ html {
   padding: 0.5rem 2rem;
 }
 
-/* --- Logo con Personalidad --- */
+/* --- Logo --- */
 .navbar__logo {
   font-size: 1.6rem;
-  font-weight: 900; /* Extra bold */
+  font-weight: 900;
   text-decoration: none;
   color: var(--main-black);
   text-transform: uppercase;
+  transition: transform 0.2s;
 }
 
 .navbar__logo span {
@@ -57,11 +64,17 @@ html {
   border-left: 3px solid var(--main-black);
 }
 
-/* --- Menú Estilo "Tags" --- */
+.navbar__logo:hover {
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+/* --- Menú Desktop --- */
 .navbar__menu {
   display: flex;
   list-style: none;
   gap: 1.5rem;
+  align-items: center;
 }
 
 .navbar__menu li a {
@@ -82,11 +95,11 @@ html {
   transform: translate(-2px, -2px);
 }
 
-/* --- Botón Contacto Especial --- */
+/* --- Botón Contacto --- */
 .btn-contacto {
-  background: var(--main-black);
+  background: var(--main-black) !important;
   color: #fff !important;
-  box-shadow: 4px 4px 0px #888; /* Sombra gris para variar */
+  box-shadow: 4px 4px 0px #888 !important;
 }
 
 .btn-contacto:hover {
@@ -94,54 +107,103 @@ html {
   box-shadow: 2px 2px 0px #000 !important;
 }
 
-/* --- Toggle Mobile --- */
+/* --- Toggle Hamburguesa --- */
 .navbar__toggle {
-  display: none;
+  display: none; /* Oculto en PC */
   background: var(--accent-yellow);
   border: 2px solid var(--main-black);
-  padding: 5px 10px;
+  padding: 5px 12px;
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 2px 2px 0px var(--main-black);
+  border-radius: 8px;
+  transition: 0.2s;
 }
 
-.navbar__logo:hover {
-  display: inline-block;
-  transform: rotate(-3deg);
-  transition: transform 0.2s;
+.navbar__toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--main-black);
 }
 
+/* ============================================================
+   SOLUCIÓN RESPONSIVE (Móvil)
+   ============================================================ */
+@media (max-width: 768px) {
+  .navbar__toggle {
+    display: block; /* Aparece en móvil */
+  }
 
+  .navbar__menu {
+    display: none; /* Se oculta para el toggle */
+    position: absolute;
+    top: calc(100% + 10px); /* Separación para mantener el look flotante */
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 3px solid var(--main-black);
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    text-align: center;
+  }
 
-/* --- Animación de "Balanceo" al entrar --- */
+  /* CLASE ACTIVA (IMPORTANTE) */
+  .navbar__menu.active {
+    display: flex !important;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .navbar__menu li a {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar__toggle {
+    display: block; /* Aparece en móvil */
+  }
+
+  .navbar__menu {
+    display: none; /* Se oculta para el toggle */
+    position: absolute;
+    top: calc(100% + 10px); /* Separación para mantener el look flotante */
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 3px solid var(--main-black);
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  /* CLASE ACTIVA (IMPORTANTE) */
+  .navbar__menu.active {
+    display: flex !important;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .navbar__menu li a {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
 @keyframes entrance {
   0% { transform: translate(-50%, -100px); }
   60% { transform: translate(-50%, 10px); }
   100% { transform: translate(-50%, 0); }
 }
 
-.navbar {
-  animation: entrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Mobile */
-@media (max-width: 650px) {
-  .navbar__toggle { display: block; }
-  
-  .navbar__menu {
-    display: none; /* Aquí puedes usar JS para mostrarlo */
-    position: absolute;
-    top: 100%;
-    left: -3px;
-    width: calc(100% + 6px);
-    background: white;
-    border: 3px solid var(--main-black);
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 0 0 12px 12px;
-  }
-  
-  .navbar__menu.active {
-    display: flex;
-  }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

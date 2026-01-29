@@ -47,3 +47,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === lightbox) lightbox.close();
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            console.log("Menú toggle activo"); // Esto te avisará si funciona
+        });
+    } else {
+        console.error("No se encontraron los elementos del menú. Revisa los IDs.");
+    }
+});
