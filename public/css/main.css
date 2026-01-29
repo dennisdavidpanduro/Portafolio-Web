@@ -1,0 +1,151 @@
+/* --- VARIABLES --- */
+:root {
+  --bg-color: #ffffff;
+  --main-black: #1a1a1a;
+  --accent-yellow: #f4ff5e;
+  --text-gray: #4b5563;
+  --poppins: 'Poppins', sans-serif;
+}
+
+/* --- SECCIÓN HERO CON MUCHO MÁS ESPACIO --- */
+.hero {
+  min-height: 60vh; /* Aumentamos la altura mínima */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 1.5rem; /* Más espacio arriba y abajo */
+  margin-top: 100px; /* Separación del Header */
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* --- BADGE CON MOVIMIENTO --- */
+.hero__badge {
+  display: inline-block;
+  padding: 8px 18px;
+  background: var(--accent-yellow);
+  border: 2px solid var(--main-black);
+  border-radius: 50px;
+  font-family: var(--poppins);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem; /* Más espacio */
+  box-shadow: 4px 4px 0px var(--main-black);
+  animation: bounceSoft 2s infinite ease-in-out;
+}
+
+.hero h1 {
+  font-family: var(--poppins);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--text-gray);
+  margin-bottom: 2rem;
+}
+
+/* --- ESTILO DE LA DESCRIPCIÓN --- */
+.hero__description {
+  max-width: 700px;
+  font-family: var(--poppins);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+  font-weight: 400;
+  margin-bottom: 4rem; /* Espacio generoso antes de los botones */
+}
+
+.hero__description strong {
+  color: var(--main-black);
+  font-weight: 700;
+}
+
+/* --- CONTENEDOR DE BOTONES --- */
+.hero__actions {
+  display: flex;
+  gap: 2rem; /* Más espacio entre botones */
+  justify-content: center;
+}
+
+/* --- ESTILO BASE DE BOTONES --- */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  font-family: var(--poppins);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 2px solid var(--main-black);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 5px 5px 0px var(--main-black);
+}
+
+.btn img {
+  width: 22px;
+  height: 22px;
+}
+
+.btn--primary {
+  background-color: var(--main-black);
+  color: white;
+}
+
+.btn--secondary {
+  background-color: white;
+  color: var(--main-black);
+}
+
+/* --- INTERACCIÓN (HOVER) --- */
+.btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px var(--main-black);
+}
+
+.btn--primary:hover {
+  background-color: var(--accent-yellow);
+  color: var(--main-black);
+}
+
+.btn--secondary:hover {
+  background-color: var(--accent-yellow);
+}
+
+/* --- ANIMACIONES --- */
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajuste para móviles */
+@media (max-width: 600px) {
+  .hero {
+    padding: 4rem 1rem;
+  }
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .btn {
+    width: 240px;
+    justify-content: center;
+  }
+}

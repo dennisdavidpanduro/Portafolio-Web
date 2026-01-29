@@ -1,0 +1,147 @@
+html {
+  scroll-behavior: smooth; /* Desplazamiento fluido */
+  /* Ajusta este valor según la altura de tu navbar + el top (20px + ~60px) */
+  scroll-padding-top: 100px; 
+}
+
+:root {
+  --bg-color: #ffffff;
+  --main-black: #1a1a1a;
+  --accent-yellow: #f4ff5e; /* Color limón vibrante */
+  --shadow: 4px 4px 0px var(--main-black);
+  --shadow-hover: 2px 2px 0px var(--main-black);
+  --poppins: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--poppins);
+}
+
+.navbar {
+  position: fixed;
+  top: 20px; /* Separado del techo para efecto flotante */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1100px;
+  background: var(--bg-color);
+  border: 3px solid var(--main-black);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+/* --- Logo con Personalidad --- */
+.navbar__logo {
+  font-size: 1.6rem;
+  font-weight: 900; /* Extra bold */
+  text-decoration: none;
+  color: var(--main-black);
+  text-transform: uppercase;
+}
+
+.navbar__logo span {
+  background: var(--accent-yellow);
+  padding: 0 5px;
+  border-left: 3px solid var(--main-black);
+}
+
+/* --- Menú Estilo "Tags" --- */
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar__menu li a {
+  text-decoration: none;
+  color: var(--main-black);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.navbar__menu li a:hover {
+  background: var(--accent-yellow);
+  border: 2px solid var(--main-black);
+  box-shadow: 3px 3px 0px var(--main-black);
+  transform: translate(-2px, -2px);
+}
+
+/* --- Botón Contacto Especial --- */
+.btn-contacto {
+  background: var(--main-black);
+  color: #fff !important;
+  box-shadow: 4px 4px 0px #888; /* Sombra gris para variar */
+}
+
+.btn-contacto:hover {
+  background: #333 !important;
+  box-shadow: 2px 2px 0px #000 !important;
+}
+
+/* --- Toggle Mobile --- */
+.navbar__toggle {
+  display: none;
+  background: var(--accent-yellow);
+  border: 2px solid var(--main-black);
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--main-black);
+}
+
+.navbar__logo:hover {
+  display: inline-block;
+  transform: rotate(-3deg);
+  transition: transform 0.2s;
+}
+
+
+
+/* --- Animación de "Balanceo" al entrar --- */
+@keyframes entrance {
+  0% { transform: translate(-50%, -100px); }
+  60% { transform: translate(-50%, 10px); }
+  100% { transform: translate(-50%, 0); }
+}
+
+.navbar {
+  animation: entrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar__toggle { display: block; }
+  
+  .navbar__menu {
+    display: none; /* Aquí puedes usar JS para mostrarlo */
+    position: absolute;
+    top: 100%;
+    left: -3px;
+    width: calc(100% + 6px);
+    background: white;
+    border: 3px solid var(--main-black);
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .navbar__menu.active {
+    display: flex;
+  }
+}

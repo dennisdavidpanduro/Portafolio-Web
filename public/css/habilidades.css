@@ -1,0 +1,75 @@
+/* --- SECCIÓN HABILIDADES (VERSIÓN SOFT COLOR) --- */
+.skills {
+  padding: 3rem 1.5rem;
+  /* Usamos un amarillo muy suave para el fondo de la sección */
+  background-color: #fefce8; 
+  text-align: center;
+  /* Eliminamos el borde negro de la sección para que sea "diferente" */
+  border: none; 
+}
+
+.skills__title {
+  font-family: var(--poppins);
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: var(--main-black);
+  display: inline-block;
+}
+
+/* --- CONTENEDOR --- */
+.skills__container {
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+/* --- TARJETAS (SKILL TAGS) --- */
+.skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #ffffff;
+  /* Mantenemos el borde solo en las etiquetas para el estilo gráfico */
+  border: 2px solid var(--main-black); 
+  border-radius: 16px;
+  /* Sombra más suave pero sólida */
+  box-shadow: 4px 4px 0px var(--main-black);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-tag img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.skill-tag span {
+  font-family: var(--poppins);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--main-black);
+}
+
+/* Hover: El color cambia al amarillo fuerte que ya usas */
+.skill-tag:hover {
+  background-color: var(--accent-yellow);
+  transform: scale(1.05);
+  box-shadow: 6px 6px 0px var(--main-black);
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .skills {
+    padding: 2.5rem 1rem;
+  }
+  
+  .skill-tag {
+    padding: 10px 16px;
+    border-radius: 12px;
+  }
+}

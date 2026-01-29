@@ -1,0 +1,101 @@
+/* --- LIGHTBOX PRINCIPAL --- */
+.lightbox {
+  padding: 0;
+  border: none;
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Evita scrolls */
+}
+
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Imagen Maximizado: Prioriza el alto para que se vea gigante */
+#lightboxImg {
+  max-width: 90vw;
+  max-height: 95vh; /* Ocupa casi todo el alto de la pantalla */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* --- BOTONES DE NAVEGACIÓN (Corrección de corte) --- */
+.lightbox__prev, .lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f4ff5e;
+  border: 3px solid #1a1a1a;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  cursor: pointer;
+  border-radius: 12px; /* Soft Neobrutalism */
+  box-shadow: 4px 4px 0px #1a1a1a; /* Sombra sólida */
+  transition: all 0.2s ease;
+  z-index: 100;
+  /* Evita que el botón se corte al hacerle hover */
+  margin: 0 10px; 
+}
+
+.lightbox__prev { left: 20px; }
+.lightbox__next { right: 20px; } /* Aseguramos espacio a la derecha */
+
+.lightbox__prev:hover, .lightbox__next:hover {
+  transform: translateY(-55%) scale(1.1);
+  background: #ffffff;
+}
+
+/* Botón cerrar (X) arriba a la derecha */
+.lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f4ff5e;
+  color: #1a1a1a;
+  border: 3px solid #1a1a1a;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
+}
+
+.lightbox__close:hover {
+  background: #ff4747;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Ajuste para que en móviles los botones no tapen la imagen */
+@media (max-width: 768px) {
+  .lightbox__prev { left: 10px; }
+  .lightbox__next { right: 10px; }
+  #lightboxImg {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+}

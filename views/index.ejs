@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dennis Panduro | Portafolio</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/habilidades.css">
+  <link rel="stylesheet" href="/css/proyectos.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/lightbox.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <%- include("partials/navbar") %>
+  <%- include("partials/main") %>
+  <%- include("partials/habilidades") %>
+  <%- include("partials/proyectos") %>
+  <%- include("partials/footer") %>
+
+<dialog id="lightbox" class="lightbox">
+  <button class="lightbox__close" id="closeLightbox">✕</button>
+  <div class="lightbox__content">
+    <button class="lightbox__prev" id="prevBtn">❮</button>
+    <img src="" alt="Imagen Ampliada" id="lightboxImg">
+    <button class="lightbox__next" id="nextBtn">❯</button>
+  </div>
+</dialog>
+
+  <script src="/js/main.js"></script>
+
+  
+</body>
+
+</html>
+

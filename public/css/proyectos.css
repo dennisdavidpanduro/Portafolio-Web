@@ -1,0 +1,321 @@
+/* --- SECCIÓN PROYECTOS --- */
+.projects {
+  padding: 4rem 1.5rem;
+  background-color: #ffffff; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 3.5rem;
+  color: #1a1a1a;
+  position: relative;
+  display: inline-block;
+  animation: bounceSoft 2s infinite ease-in-out;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-color: #f4ff5e; 
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+
+/* --- GRID Y TARJETAS --- */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto; 
+}
+
+.project-card {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 20px;
+  width: 320px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 6px 6px 0px #1a1a1a;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px #1a1a1a;
+}
+
+.project-card__image {
+  height: 160px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  color: #ccc;
+  border-bottom: 2px solid #1a1a1a;
+  font-size: 30px;
+}
+
+.project-card__content {
+  padding: 1.5rem;
+}
+
+/* AJUSTE PARA ICONOS AL COSTADO DEL BADGE */
+.card-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: #f4ff5e;
+  padding: 4px 10px;
+  border: 2px solid #1a1a1a;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  vertical-align: middle; /* Alineación base */
+}
+
+/* ESTILO PARA LOS ICONOS DE TECNOLOGÍA (PS, AI, etc) */
+.project-card__content img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-left: 6px;
+  margin-bottom: 0.8rem; /* Igual al margen del badge */
+  border: 1.5px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 2px;
+  background: white;
+  box-shadow: 2px 2px 0px #1a1a1a;
+  transition: 0.2s;
+}
+
+.project-card__content img:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px #f4ff5e;
+}
+
+/* --- VENTANA FLOTANTE (MODAL) CORREGIDA --- */
+.project-modal {
+  border: 3px solid #1a1a1a;
+  border-radius: 24px;
+  padding: 0;
+  width: 90%;
+  max-width: 700px;
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  background: white;
+  box-shadow: 12px 12px 0px #1a1a1a;
+  overflow-y: auto;
+  max-height: 85vh;
+  outline: none;
+}
+
+.project-modal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.modal__header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+.modal__close {
+  background: #f4ff5e;
+  border: 2px solid #1a1a1a;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  transition: 0.2s;
+}
+
+.modal__close:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #1a1a1a;
+}
+
+.modal__body {
+  padding: 0 2.5rem 2.5rem;
+  text-align: left;
+}
+
+.modal__body h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.modal__tag {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #4b5563;
+  background: #f3f4f6;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.modal__gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.modal__gallery img {
+  width: 100%;
+  border: 2px solid #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0px #1a1a1a;
+}
+
+.modal__body ul {
+  padding-left: 1.2rem;
+  list-style: square;
+}
+
+.modal__body li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   ESTILO MODERNO "EDITORIAL" PARA MODAL TRES-I
+   ============================================================ */
+
+/* 1. Fondo del modal más suave para que las fotos resalten */
+#modal-tres-i {
+  background-color: #fafafa;
+}
+
+/* 2. Limpieza de la galería */
+#modal-tres-i .modal__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 3. Títulos con estilo de etiqueta moderna */
+#modal-tres-i .modal__gallery h1 {
+  font-size: 1.5rem;
+  background: var(--main-black);
+  color: white;
+  display: inline-block;
+  padding: 5px 15px;
+  transform: rotate(-1deg); /* Efecto sticker */
+  margin-top: 2.5rem;
+  width: fit-content;
+}
+
+#modal-tres-i .modal__gallery h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-gray);
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* 4. Grilla de posts estilo "Feed de Instagram" */
+#modal-tres-i .modal__gallery > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas para look de feed */
+  gap: 12px;
+  background: white;
+  padding: 20px;
+  border: 2px solid var(--main-black);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0px rgba(0, 132, 255, 0.03);
+  margin-bottom: 3rem;
+}
+
+/* 5. Imágenes de los posts */
+#modal-tres-i .modal__gallery div img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  filter: grayscale(20%); /* Efecto visual moderno */
+  transition: all 0.3s ease;
+}
+
+#modal-tres-i .modal__gallery div img:hover {
+  filter: grayscale(0%);
+  transform: translateY(-5px);
+  border-color: var(--main-black);
+}
+
+/* 6. Caja de descripción (Lorem Ipsum) como pie de foto */
+#modal-tres-i .modal__gallery div div {
+  grid-column: 1 / -1;
+  background: #f1f1f1;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-top: 10px;
+}
+
+#modal-tres-i .modal__gallery div div p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #555;
+  font-style: normal;
+  line-height: 1.5;
+  border: none;
+}
+
+/* 7. Portada Principal */
+#modal-tres-i .modal__img {
+  border-radius: 20px;
+  border: 2px solid var(--main-black);
+  filter: none;
+}
+
+/* Responsive para que en móvil se vea en 2 columnas */
+@media (max-width: 500px) {
+  #modal-tres-i .modal__gallery > div {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+  }
+}
+
+/* ANIMACIONES */
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .modal__gallery { grid-template-columns: 1fr; }
+  .modal__body { padding: 0 1.5rem 1.5rem; }
+}
+
