@@ -91,7 +91,7 @@
 }
 
 /* Ajuste para que en móviles los botones no tapen la imagen */
-@media (max-width: 768px) {
+@media (max-width: 650px) {
   .lightbox__prev { left: 10px; }
   .lightbox__next { right: 10px; }
   #lightboxImg {

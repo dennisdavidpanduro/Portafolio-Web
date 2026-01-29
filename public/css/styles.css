@@ -125,7 +125,7 @@ html {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 650px) {
   .navbar__toggle { display: block; }
   
   .navbar__menu {

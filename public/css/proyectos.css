@@ -327,7 +327,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
   /* En pantallas muy pequeñas, forzar todo a una columna si es necesario */
   #modal-tres-i .modal__gallery > div {
     grid-template-columns: 1fr;
