@@ -61,3 +61,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("No se encontraron los elementos del menú. Revisa los IDs.");
     }
 });
+
