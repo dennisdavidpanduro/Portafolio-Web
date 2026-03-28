@@ -1,64 +1,115 @@
-/* --- SECCIÓN HABILIDADES --- */
-.skills {
-  padding: 4rem 1.5rem;
-  background-color: #fffdec; /* Un tono crema suave para variar el fondo */
-}
-
-.skills__title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 900;
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
-
-.skills__container {
-  display: flex;
-  flex-wrap: wrap;       /* PERMITE QUE LOS ELEMENTOS BAJEN */
-  justify-content: center;
-  gap: 1.2rem;           /* Espacio entre etiquetas */
-  max-width: 900px;
+/* --- CONTENEDOR DE GRILLA --- */
+.skills-grid {
+  padding: 8rem 5rem;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
-.skill-tag {
+.skills-grid__header {
+  margin-bottom: 5rem;
+}
+
+.skills-grid__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* --- TARJETAS PROFESIONALES --- */
+.skill-card {
+  background: #ffffff;
+  border: 3px solid #1a1a1a;
+  border-radius: 30px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 0px #1a1a1a;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 18px 18px 0px #f4ff5e; /* Acento amarillo */
+}
+
+/* Encabezado de la Tarjeta */
+.skill-card__header-box {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: white;
-  padding: 8px 16px;
-  border: 2px solid #1a1a1a;
-  border-radius: 50px;    /* Estilo cápsula Soft */
-  box-shadow: 4px 4px 0px #1a1a1a;
-  transition: 0.2s ease;
+  gap: 15px;
+  margin-bottom: 2rem;
 }
 
-.skill-tag:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #f4ff5e;
-}
-
-.skill-tag img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-.skill-tag span {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
+.category-icon {
+  width: 45px;
+  height: 45px;
   color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Ajustes para móviles */
-@media (max-width: 650px) {
-  .skills {
-    padding: 2.5rem 1rem;
-  }
-  
-  .skill-tag {
-    padding: 10px 16px;
-    border-radius: 12px;
-  }
+.skill-card h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+/* --- LISTADO DE TECNOLOGÍAS CON ICONOS --- */
+.skill-card__tags {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  background: #f9f9f9;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.tag-item img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: grayscale(100%); /* Mantenerlo profesional hasta el hover */
+}
+
+.tag-item span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.skill-card:hover .tag-item {
+  background: white;
+  border-color: #1a1a1a;
+}
+
+.tag-item:hover img {
+  filter: grayscale(0%);
+}
+
+/* --- ANIMACIÓN --- */
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1050px) {
+  .skills-grid__container { grid-template-columns: 1fr; gap: 40px; }
+  .skills-grid { padding: 4rem 2rem; }
 }
