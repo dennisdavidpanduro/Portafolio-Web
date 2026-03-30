@@ -1,0 +1,93 @@
+/* --- ESTILO BASE DEL MODAL --- */
+.project-modal {
+  border: 2px solid #1a1a1a;
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.modal__intro {
+  margin-bottom: 2rem;
+  padding-left: 15px;
+  border-left: 6px solid #f4ff5e; /* Tu color de acento */
+}
+
+.modal__title-block {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.modal__section {
+  margin-bottom: 2.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.section__info h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.section__info p {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+/* --- TRATAMIENTO DE IMÁGENES (SIN CORTES) --- */
+
+/* Para imágenes generales (arquitectura, cabeceras, etc) */
+.img-full-view {
+  width: 100%;
+  height: auto; /* IMPORTANTE: No limita la altura */
+  border: 2px solid #1a1a1a;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 10px;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+}
+
+/* --- SOLUCIÓN ESPECÍFICA PARA LAS CARDS AZULES --- */
+.img-ui-card {
+  width: 100%;
+  height: auto; /* Mantiene la proporción larga de la imagen original */
+  object-fit: contain; /* Asegura que se vea completa sin recortes */
+  border: 2px solid #1a1a1a;
+  border-radius: 12px;
+  background: #f8f8f8; /* Fondo sutil por si la imagen tiene transparencias */
+  transition: all 0.3s ease;
+}
+
+.img-ui-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px #f4ff5e;
+}
+
+/* --- LAYOUT --- */
+.modal__grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.modal__grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: start; /* Alinea las imágenes al inicio para que no se estiren */
+}
+
+.alta-fidelidad-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+  .modal__grid-2, .modal__grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,49 +1,71 @@
-/* --- CONTENEDOR DE GRILLA --- */
+/* --- SECCIÓN HABILIDADES (CONEXIÓN FLUIDA) --- */
 .skills-grid {
-  padding: 8rem 5rem;
+  padding: 1.5rem 5rem; /* Espaciado mínimo para evitar saltos largos */
   max-width: 1250px;
   margin: 0 auto;
 }
 
 .skills-grid__header {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .skills-grid__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  align-items: stretch;
+  gap: 20px;
 }
 
-/* --- TARJETAS PROFESIONALES --- */
+/* --- ESTILO DE FICHA TÉCNICA --- */
 .skill-card {
-  background: #ffffff;
-  border: 3px solid #1a1a1a;
-  border-radius: 30px;
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.5); /* Fondo traslúcido para ligereza */
+  border: 1.5px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 10px 0px #1a1a1a;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
+/* Efecto de elevación limpia al hover */
 .skill-card:hover {
-  transform: translate(-5px, -5px);
-  box-shadow: 18px 18px 0px #f4ff5e; /* Acento amarillo */
+  border-color: #1a1a1a;
+  background: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* Encabezado de la Tarjeta */
+/* Indicador de acento en la esquina */
+.skill-card::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  background: #f4ff5e; /* Tu amarillo de acento */
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skill-card:hover::after {
+  opacity: 1;
+}
+
+/* --- HEADER DE LA FICHA --- */
 .skill-card__header-box {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 2rem;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #e0e0e0;
 }
 
 .category-icon {
-  width: 45px;
-  height: 45px;
+  width: 32px;
+  height: 32px;
   color: #1a1a1a;
   display: flex;
   align-items: center;
@@ -51,65 +73,55 @@
 }
 
 .skill-card h3 {
-  font-size: 1.3rem;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1a1a;
   text-transform: uppercase;
-  letter-spacing: -0.5px;
+  letter-spacing: 0.5px;
 }
 
-/* --- LISTADO DE TECNOLOGÍAS CON ICONOS --- */
+/* --- GRILLA DE TAGS INTERNA --- */
 .skill-card__tags {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .tag-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 15px;
-  background: #f9f9f9;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  transition: 0.3s;
+  gap: 6px;
+  background: #f8f8f8;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
 }
 
-.tag-item img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  filter: grayscale(100%); /* Mantenerlo profesional hasta el hover */
-}
-
-.tag-item span {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #333;
-}
-
-.skill-card:hover .tag-item {
-  background: white;
+.tag-item:hover {
+  background: #ffffff;
   border-color: #1a1a1a;
 }
 
+.tag-item img {
+  width: 16px;
+  height: 16px;
+  filter: grayscale(100%); /* Efecto minimalista */
+  transition: filter 0.3s;
+}
+
 .tag-item:hover img {
-  filter: grayscale(0%);
+  filter: grayscale(0%); /* El color vuelve al pasar el mouse */
 }
 
-/* --- ANIMACIÓN --- */
-.animate-in {
-  opacity: 0;
-  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+.tag-item span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #444;
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 1050px) {
-  .skills-grid__container { grid-template-columns: 1fr; gap: 40px; }
-  .skills-grid { padding: 4rem 2rem; }
+@media (max-width: 950px) {
+  .skills-grid__container { grid-template-columns: 1fr; }
+  .skills-grid { padding: 1.5rem 2rem; }
 }

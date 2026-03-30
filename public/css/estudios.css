@@ -1,88 +1,179 @@
-/* --- CONTENEDOR DE ESTUDIOS --- */
-.education-grid {
-  padding: 8rem 5rem;
-  max-width: 1250px;
+/* --- SECCIÓN ESTUDIOS: LIMPIA Y FLOTANTE --- */
+.edu-timeline {
+  padding: 2rem 5rem; /* Espaciado reducido para cohesión vertical */
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.education-grid__header {
-  margin-bottom: 5rem;
+.edu-timeline__header {
+  margin-bottom: 3rem;
+  text-align: left;
 }
 
-.education-grid__container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Dos columnas para los estudios principales */
-  gap: 40px;
-}
-
-/* --- TARJETAS DE EDUCACIÓN --- */
-.education-card {
-  background: #ffffff;
-  border: 3px solid #1a1a1a;
-  border-radius: 35px;
-  padding: 3rem;
+.edu-timeline__content {
   display: flex;
   flex-direction: column;
-  box-shadow: 12px 12px 0px #1a1a1a;
+  gap: 30px; /* Espacio entre las tarjetas */
+}
+
+/* --- TARJETAS SUTILES --- */
+.timeline-item {
+  display: flex;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  /* Sombra proyectada sutil que evoca tu estilo sin saturar */
+  box-shadow: 10px 10px 0px rgba(26, 26, 26, 0.05); 
+  border: 1px solid #f0f0f0;
   transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.education-card:hover {
-  transform: translate(-5px, -5px);
-  box-shadow: 20px 20px 0px #f4ff5e;
+.timeline-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 15px 15px 0px #f4ff5e; /* Tu amarillo de acento aparece al hover */
+  border-color: #1a1a1a;
 }
 
-.education-card__header {
+/* Marcador lateral minimalista */
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  margin-top: 8px;
+}
+
+/* --- INFO TIPOGRÁFICA --- */
+.timeline-info {
+  flex: 1;
+}
+
+.timeline-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-.education-date {
-  font-size: 0.75rem;
+.institution {
+  font-size: 0.9rem;
   font-weight: 800;
   text-transform: uppercase;
-  background: #1a1a1a;
-  color: white;
-  padding: 6px 15px;
-  border-radius: 50px;
+  color: #1a1a1a;
   letter-spacing: 1px;
 }
 
-.education-card h3 {
-  font-size: 1.8rem;
+.badge {
+  font-size: 0.7rem;
+  font-weight: 900;
+  background: #f4ff5e; /* Fondo amarillo para resaltar el estado */
+  color: #1a1a1a;
+  padding: 4px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  border: 1.5px solid #1a1a1a;
+}
+
+.course-title {
+  font-size: 1.5rem;
   font-weight: 900;
   color: #1a1a1a;
+  margin-bottom: 0.5rem;
 }
 
-/* Reutilización de tu estilo de información con más aire */
-.education-card .section__info {
-  background: #f9f9f9;
-  border-radius: 20px;
-  padding: 2rem;
-  border-left: 6px solid #f4ff5e;
-  margin: 0;
-}
-
-.education-card h4 {
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin-bottom: 0.8rem;
-  color: #1a1a1a;
-  text-transform: uppercase;
-}
-
-.education-card p {
-  font-family: 'Poppins', sans-serif;
+.course-desc {
   font-size: 0.9rem;
   color: #555;
   line-height: 1.6;
+  margin: 0;
+}
+
+/* --- CONTENEDOR SIN LÍNEAS --- */
+.edu-timeline__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Espacio entre tarjetas */
+  padding-left: 10px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* --- EL PUNTO AHORA ES UN ACENTO --- */
+.timeline-marker {
+  padding-top: 15px; /* Alinea el punto con el título */
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  background: #f4ff5e;
+  border: 2px solid #1a1a1a;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 4px 4px 0px #1a1a1a; /* Pequeño efecto neobrutalista */
+}
+
+/* --- TARJETAS LIMPIAS --- */
+.card-style {
+  background: white;
+  border: 2px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%;
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.03); /* Sombra muy suave para no saturar */
+  transition: all 0.3s ease;
+}
+
+.card-style:hover {
+  transform: translateX(5px);
+  box-shadow: 8px 8px 0px #f4ff5e; /* Brilla al pasar el mouse */
+  border-color: #1a1a1a;
+}
+
+.timeline-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.institution {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.badge {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+.badge.current {
+  background: #1a1a1a;
+  color: #f4ff5e;
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 900px) {
-  .education-grid__container { grid-template-columns: 1fr; }
-  .education-grid { padding: 4rem 2rem; }
-  .education-card { padding: 2rem; }
+@media (max-width: 850px) {
+  .edu-timeline { padding: 2rem 1.5rem; }
+  .timeline-item { padding: 1.5rem; flex-direction: column; }
+  .timeline-marker { display: none; } /* Ocultar punto en móvil para ganar espacio */
+  .course-title { font-size: 1.2rem; }
 }

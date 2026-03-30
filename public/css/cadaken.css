@@ -1,0 +1,59 @@
+/* --- CONFIGURACIÓN DE TEXTOS --- */
+.modal__intro {
+  margin-bottom: 2rem;
+  border-left: 6px solid #f4ff5e; /* Tu amarillo de acento */
+  padding-left: 15px;
+}
+
+.modal__title-block {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.section__info h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section__info p {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+/* --- GRILLA Y TAMAÑO UNIFICADO DE IMÁGENES --- */
+.modal__grid-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  align-items: start;
+}
+
+.img-ui-uniform {
+  width: 100%;
+  /* Forzamos proporción de pantalla de celular (9:19) */
+  aspect-ratio: 9 / 19; 
+  object-fit: cover; 
+  object-position: top; /* Asegura que se vea la parte superior de la UI */
+  
+  border: 2px solid #1a1a1a;
+  border-radius: 15px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Efecto Neobrutalista Soft al pasar el mouse */
+.img-ui-uniform:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px #1a1a1a; /* Sombra sólida igual a tu card */
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .modal__grid-display {
+    grid-template-columns: 1fr 1fr; /* 2 columnas en móvil */
+  }
+}

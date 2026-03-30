@@ -1,48 +1,96 @@
-/* --- ESTILO DE VIDEOS EN BUCLE --- */
-.modal__video {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* Mantiene el formato cuadrado de tus piezas */
-  object-fit: cover;
-  border-radius: 24px;
-  border: 3px solid #1a1a1a;
-  box-shadow: 8px 8px 0px rgba(0,0,0,0.05);
-  background: #f0f0f0;
-  pointer-events: none; /* El usuario no puede pausarlos, actúan como GIFs */
+/* --- CONFIGURACIÓN DEL MODAL (LIMPIO Y AMPLIO) --- */
+.project-modal {
+  padding: 0;
+  border: 2px solid #1a1a1a;
+  border-radius: 20px;
+  background: #ffffff;
+  width: 95%; /* Un poco más ancho para que luzca la laptop */
+  max-width: 850px;
 }
 
-.mb-2 {
+.modal__body {
+  padding: 1.5rem 2.5rem;
+}
+
+/* --- CABECERA --- */
+.modal__intro {
+  margin-bottom: 2rem;
+  border-left: 6px solid #f4ff5e;
+  padding-left: 20px;
+}
+
+.modal__title-block {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.modal__subtitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #666;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* --- SECCIONES --- */
+.modal__section {
   margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* --- REFUERZO DE GRILLAS --- */
-.modal__grid-2 {
+.section__info h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.section__info p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #444;
+  margin: 0;
+}
+
+/* --- CORRECCIÓN DE IMÁGENES (MOCKUPS) --- */
+.img-full {
+  width: 100%;
+  height: auto; /* Permite que la imagen dicte su propia altura sin cortarse */
+  display: block;
+  border-radius: 12px;
+  /* Eliminamos object-fit y max-height para evitar el corte */
+}
+
+/* Grillas para piezas pequeñas */
+.modal__grid-2, .modal__grid-3 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  margin-top: 1rem;
+  gap: 15px;
 }
 
-.modal__grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.modal__grid-2 { grid-template-columns: repeat(2, 1fr); }
+.modal__grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+.modal__section img, 
+.modal__section video {
+  width: 100%;
+  border-radius: 12px;
+  border: 1.5px solid #1a1a1a;
+  transition: transform 0.3s ease;
 }
 
-/* --- EFECTO HOVER EN CONTENIDO --- */
-.modal__section video, 
-.modal__section img {
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Hover Neobrutalista Soft */
+.modal__section img:hover,
+.modal__section video:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 0px #f4ff5e;
 }
 
-.modal__section video:hover, 
-.modal__section img:hover {
-  transform: scale(1.03) translateY(-5px);
-}
-
-/* Responsivo */
-@media (max-width: 850px) {
-  .modal__grid-2, .modal__grid-3 {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+/* --- RESPONSIVE --- */
+@media (max-width: 650px) {
+  .modal__grid-2, .modal__grid-3 { grid-template-columns: 1fr; }
+  .modal__body { padding: 1.5rem; }
+  .modal__title-block { font-size: 1.5rem; }
 }
