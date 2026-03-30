@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 6rem 1.5rem; /* Más espacio arriba y abajo */
+  padding: 6rem 1.5rem; /* Más espacio arriba 
   margin-top: 100px; /* Separación del Header */
   animation: fadeIn 0.8s ease-out forwards;
 }
